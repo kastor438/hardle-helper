@@ -19,9 +19,9 @@ function App() {
     const wordLength = 5;
     const maxGuesses = 10;
 
-    const wordList = words[wordLength]
-        ? (words[wordLength] as string[]).sort()
-        : (words['5'] as string[]).sort();
+    const wordList = (words[wordLength]
+        ? (words[wordLength] as string[]).sort().map(word => word.toUpperCase())
+        : (words['5'] as string[]).sort()).map(word => word.toUpperCase());
 
     //States
     const [focusedCell, SetFocusedCell] = useState<number>(0);
@@ -111,7 +111,7 @@ function App() {
 
     function OnSubmitGuess(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
-        if(!wordList.includes(currentGuess.join('').toLowerCase()) || guessList.length >= maxGuesses || currentPresentCount + currentCorrectCount > wordLength){
+        if(!wordList.includes(currentGuess.join('').toUpperCase()) || guessList.length >= maxGuesses || currentPresentCount + currentCorrectCount > wordLength){
             alert('Invalid guess');
             return;
         }
@@ -138,9 +138,12 @@ function App() {
 
         guessList.forEach(guessEntry => {
             possibleWords = possibleWords.filter(word => {
+                if(guessEntry.guess.join('') === word){
+                    return false;
+                }
+
                 let presentCount = 0;
                 let correctCount = 0;
-
                 const wordLetters = word.split('');
 
                 guessEntry.guess.forEach((letter, index) => {
@@ -231,7 +234,7 @@ function App() {
                     <span id='hardle-words-list-header-title'>Possible Words</span>
                 </div>
                 <div id='hardle-words-list'>
-                    {wordList.map((word, index) => (
+                    {DeterminePossibleWordList().map((word, index) => (
                         <div key={index} className='hardle-words-list-item'>
                             {word}
                         </div>

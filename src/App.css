@@ -211,10 +211,10 @@
                                 margin-bottom: -5px;
                                 align-items: flex-end;
                             }
-                            .hardle-guess-counter-container:hover .hardle-guess-arrow-container{
+                            .hardle-input-guess-counter-container:hover .hardle-guess-arrow-container{
                                 opacity: 0.5;
                             }
-                            .hardle-guess-counter-container:hover .hardle-guess-arrow-container:hover{
+                            .hardle-input-guess-counter-container:hover .hardle-guess-arrow-container:hover{
                                 opacity: 1;
                             }
 
