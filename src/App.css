@@ -1,0 +1,341 @@
+#hardle-app-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    user-select: none;
+}
+
+    #hardle-header{
+        padding: 5px 5%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+        background-color: rgb(24, 24, 24);
+    }
+
+        #hardle-header-logo {
+            width: 90px;
+            height: 90px;
+        }
+
+        #hardle-header-title {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+    #hardle-main-container{
+        flex: 1;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(18, 18, 18);
+    }
+
+        #hardle-guess-container {
+            flex: 3 0 0;
+            display: flex;
+            flex-direction: row;
+            /* justify-content: flex-start; */
+            align-items: center;
+            gap: 20px;
+        }
+
+            #hardle-guess-list{
+                flex: 2 0 0;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .hardle-guess-list-row{
+                    width: 100%;
+                    height: 60px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                    .hardle-guess-cells{
+                        width: fit-content;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 5px;
+                    }
+
+                        .hardle-guess-letter-container{
+                            width: 60px;
+                            height: 60px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 5px;
+                            border: 2px solid rgb(64, 64, 64);
+                            background-color: rgb(34, 34, 34);
+                        }
+
+                            .hardle-guess-letter{
+                                color: white;
+                                font-size: 2rem;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                                pointer-events: none;
+                            }
+
+                    .hardle-guess-counters{
+                        position: relative;
+                        width: 60px;
+                        height: 100%;
+                        opacity: 0;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+                    }
+                    .hardle-guess-counters.validGuess{
+                        opacity: 1;
+                    }
+
+                        .hardle-guess-counters-container{
+                            position: absolute;
+                            width: 30px;
+                            height: 30px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 5px;
+                            border: 2px solid rgb(64, 64, 64);
+                            background-color: rgb(34, 34, 34);
+                            color: black;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                        #hardle-guess-present-counter-container{
+                            background-color: rgb(200, 180, 0);
+                            border-color: rgb(200, 180, 0);
+                            top: 5px;
+                            left: 0;
+                        }
+                        #hardle-guess-correct-counter-container{
+                            background-color: rgb(0, 200, 0);
+                            border-color: rgb(0, 200, 0);
+                            bottom: 5px;
+                            right: 0;
+                        }
+
+                            .hardle-guess-counter-value{
+                                color: black;
+                                font-size: 1.2rem;
+                                font-weight: bold;
+                            }
+                        
+            #hardle-inputs-container{
+                flex: 3 0 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 25px;
+            }
+
+                .hardle-guess-form{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                    #hardle-guess-counters-container{
+                        /* width: 100%; */
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 10px;
+                        gap: 20px;
+                    }
+
+                        .hardle-input-guess-counter-container{
+                            position: relative;
+                            width: 60px;
+                            height: 60px;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 5px;
+                            border: 2px solid rgb(64, 64, 64);
+                            background-color: rgb(34, 34, 34);
+                            color: black;
+                            font-size: 1.5rem;
+                            font-weight: bold;
+                            cursor: pointer;
+                        }
+                        #hardle-input-guess-present-counter-container{
+                            background-color: rgb(200, 180, 0);
+                            border-color: rgb(200, 180, 0);
+                            box-shadow: 0 0 10px rgb(200, 180, 0);
+                        }
+                        #hardle-input-guess-correct-counter-container{
+                            background-color: rgb(0, 200, 0);
+                            border-color: rgb(0, 200, 0);
+                            box-shadow: 0 0 10px rgb(0, 200, 0);
+                        }
+
+                            .hardle-guess-arrow-container{
+                                position: absolute;
+                                width: 100%;
+                                height: 50%;
+                                display: flex;
+                                justify-content: center;
+                                opacity: 0;
+                                transition: 0.5s;
+                            }
+                            .hardle-guess-up-arrow-container{
+                                top: 0;
+                                margin-top: -5px;
+                                align-items: flex-start;
+                            }
+                            .hardle-guess-down-arrow-container{
+                                bottom: 0;
+                                margin-bottom: -5px;
+                                align-items: flex-end;
+                            }
+                            .hardle-guess-counter-container:hover .hardle-guess-arrow-container{
+                                opacity: 0.5;
+                            }
+                            .hardle-guess-counter-container:hover .hardle-guess-arrow-container:hover{
+                                opacity: 1;
+                            }
+
+                                .hardle-guess-arrow{
+                                    padding: 0;
+                                    /* margin: 60px; */
+                                    color: rgb(0, 0, 0);
+                                    font-size: 1rem;
+                                    font-weight: 700;
+                                    user-select: none;
+                                    -moz-user-select: none;
+                                    -webkit-user-drag: none;
+                                }
+
+                            .hardle-guess-counter{
+                                pointer-events: none;
+                                user-select: none;
+                                -moz-user-select: none;
+                                -webkit-user-select: none;
+                                -webkit-user-drag: none;
+                            }
+
+                    .hardle-input-guess-cells{
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 5px;
+                    }
+
+                        .hardle-input-guess-cell{
+                            width: 70px;
+                            height: 70px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            border-radius: 5px;
+                            border: 2px solid rgb(64, 64, 64);
+                            background-color: rgb(34, 34, 34);
+                            cursor: pointer;
+                        }
+                        .hardle-input-guess-cell.active-cell{
+                            border-color: rgb(120, 120, 120);
+                            box-shadow: 0 0 10px rgb(120, 120, 120);
+                        }
+
+                            .hardle-input-guess-letter{
+                                color: white;
+                                font-size: 2rem;
+                                font-weight: bold;
+                                text-transform: uppercase;
+                                pointer-events: none;
+                                user-select: none;
+                                -moz-user-select: none;
+                                -webkit-user-drag: none;
+                            }
+
+                    #hardle-guess-submit-container{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                        #hardle-guess-submit{
+                            padding: 10px 30px;
+                            border: none;
+                            border-radius: 5px;
+                            background-color: rgb(0, 120, 215);
+                            color: white;
+                            font-size: 1.4rem;
+                            font-weight: bold;
+                            cursor: pointer;
+                            user-select: none;
+                            -moz-user-select: none;
+                            -webkit-user-drag: none;
+                        }
+
+        #hardle-words-container{
+            flex: 1 0 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            background-color: rgb(22, 22, 22);
+        }
+
+            #hardle-words-list-header{
+                padding: 20px;
+                width: 100%;
+                border-width: 0 1px 1px 1px;
+                border-style: solid;
+                border-color: rgb(0, 0, 0);
+                border-radius: 0 0 10px 10px;
+                background-color: rgb(24, 24, 24);
+            }
+
+                #hardle-words-list-header-title{
+                    color: white;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                    margin: 10px 0;
+                    text-align: center;
+                }
+
+            #hardle-words-list{
+                flex: 1 0 0;
+                width: 100%;
+                /* max-height: 200px; */
+                padding: 10px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                overflow-y: scroll;
+            }
+
+                .hardle-words-list-item{
+                    color: white;
+                    font-size: 1.2rem;
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    background-color: rgb(34, 34, 34);
+                }
